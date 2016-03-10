@@ -1,0 +1,40 @@
+{
+	"listen": 80,
+	
+	"queue" : {
+		"host" : "127.0.0.1",
+		"port" : "11300",
+		"tube_prefix" : "emailsender"
+	},
+	
+	"mysql" : {
+		"host": "127.0.0.1",
+	    "port": "3306",
+	    "database": "emailsender",
+	    "username": "root",
+	    "password": ""
+	},
+	
+	"senders" : {
+		"ses" : {
+			"type": "smtp",
+		    "smtp_host": "",
+		    "smtp_port": "",
+		    "smtp_username": "",
+		    "smtp_password": "",
+		    "smtp_secure": ""
+		},
+		
+		"group" : {
+			"type": "group",
+			"senders":["ses"]
+		}
+	},
+	
+	"workers" : {
+		"flash" : {
+			"sender": "group",
+			"worker_num" : 3
+		}
+	}
+}

@@ -1,0 +1,51 @@
+{
+	"listen": 80,
+	
+	"queue" : {
+		"host" : "192.168.100.200",
+		"port" : 11300
+	},
+	
+	"mysql" : {
+		"host": "192.168.100.200",
+	    "port": 3306,
+	    "database": "emailsender",
+	    "username": "root",
+	    "password": ""
+	},
+	
+	"senders" : {
+		"ses" : {
+			"type": "smtp",
+		    "smtp_host": "smtp.163.com",
+		    "smtp_port": "587",
+		    "smtp_username": "username",
+		    "smtp_password": "password",
+		    "smtp_secure": "tls"
+		},
+		
+		"webpower": {
+	    	"type": "webpower"
+		}
+	},
+	
+	"workers" : [
+		{
+			"id" : "flash",
+			"sender": "ses",
+			"worker_num" : 20
+		},
+		
+		{
+			"id" : "normal",
+			"sender" : "webpower",
+			"worker_num" : 5
+		},
+		
+		{
+			"id" : "forad",
+			"sender" : "webpower",
+			"worker_num" : 5
+		}
+	]
+}

@@ -1,0 +1,5 @@
+*~
+*.swp
+.DS_Store
+emailsender
+config/config.json
